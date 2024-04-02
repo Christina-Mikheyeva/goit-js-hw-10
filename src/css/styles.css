@@ -23,3 +23,23 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+
+.welcome-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.welcome-list {
+color: maroon;
+font-weight: 600;
+}
+
+.welcome-item {
+  margin-top: 10px;
+}
+
+.welcome-link {
+  padding: 10px;
+}
+
