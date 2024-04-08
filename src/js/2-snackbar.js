@@ -8,6 +8,7 @@ function createNotification(message, type, delay) {
     title: type === "success" ? "✅ Fulfilled" : "❌ Rejected",
     message: `Promise in ${delay}ms`,
   });
+  return
 }
 
 // Опрацювання сабміту форми
