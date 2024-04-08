@@ -1,0 +1,2 @@
+import"./assets/vite-promo-8a86c75b.js";/* empty css                      */import{i as m}from"./assets/vendor-77e16229.js";function l(o,e,s){m[e]({title:e==="success"?"✅ Fulfilled":"❌ Rejected",message:`Promise in ${s}ms`})}const i=document.querySelector(".form");i.addEventListener("submit",o=>{o.preventDefault();const e=parseInt(i.elements.delay.value),s=i.elements.state.value;new Promise((t,r)=>{setTimeout(()=>{s==="fulfilled"?t(e):r(e)},e)}).then(t=>{l("Fulfilled","success",t)}).catch(t=>{l("Rejected","error",t)})});
+//# sourceMappingURL=commonHelpers2.js.map
