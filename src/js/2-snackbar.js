@@ -1,43 +1,41 @@
-// Описаний у документації
+// Підключення бібліотеки
 import iziToast from "izitoast";
-// Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
 
-// Додатковий імпорт стилів
-import "izitoast/dist/css/iziToast.min.css";
+// Функція для створення повідомлення
+function createNotification(message, type, delay) {
+  iziToast[type]({
+    title: type === "success" ? "✅ Fulfilled" : "❌ Rejected",
+    message: `Promise in ${delay}ms`,
+  });
+}
 
-const delayInput = document.getElementById('delay-input');
-const resultOptions = document.querySelectorAll('input[name="result"]');
+// Опрацювання сабміту форми
+const form = document.querySelector(".form");
 
-const form = document.querySelector('form');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const delay = parseInt(delayInput.value, 10);
-  const selectedResult = Array.from(resultOptions).find((option) => option.checked).value;
+  const delay = parseInt(form.elements.delay.value);
+  const state = form.elements.state.value;
 
+  // Створення промісу
   const promise = new Promise((resolve, reject) => {
-    if (selectedResult === 'success') {
-      setTimeout(() => resolve(delay), delay);
-    } else {
-      setTimeout(() => reject(delay), delay);
-    }
+    setTimeout(() => {
+      if (state === "fulfilled") {
+        resolve(delay);
+      } else {
+        reject(delay);
+      }
+    }, delay);
   });
 
+  // Опрацювання результату промісу
   promise
     .then((delay) => {
-      iziToast.success({
-        title: '✅ Fulfilled!',
-        message: `✅ Fulfilled promise in ${delay}ms`
-,
-        position: 'topRight',
-      });
+      createNotification("Fulfilled", "success", delay);
     })
     .catch((delay) => {
-      iziToast.error({
-        title: '❌ Rejected!',
-       `❌ Rejected promise in ${delay}ms`,
-        position: 'topRight',
-      });
+      createNotification("Rejected", "error", delay);
     });
 });
