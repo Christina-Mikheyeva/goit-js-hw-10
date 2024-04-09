@@ -54,6 +54,9 @@ flatpickr("#datetime-picker", {
   },
 });
 
+disableStartButton();
+
+
 // Функція для запуску таймера
 function startTimer() {
   const startTime = new Date();
@@ -94,7 +97,7 @@ function enableStartButton() {
 
 // Функція для деактивації кнопки Start
 function disableStartButton() {
-  document.querySelector('[data-start]').setAttribute
+  document.querySelector('[data-start]').setAttribute("disabled", true)
 }
 
 
